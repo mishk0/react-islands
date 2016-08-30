@@ -145,7 +145,7 @@ var Select = function (_Component) {
     Select.prototype.renderButtonText = function renderButtonText() {
         var value = this.props.value;
 
-        return this.getItems().reduce(function (res, item) {
+        var items = this.getItems().reduce(function (res, item) {
             if (value.indexOf(item.props.value) !== -1) {
                 if (value.length === 1) {
                     res.push(item.props.children);
@@ -155,6 +155,14 @@ var Select = function (_Component) {
             }
             return res;
         }, []);
+
+        if (items.length === 1) {
+            return items;
+        }
+
+        return items.filter(function (i) {
+            return typeof i === 'string' || typeof i === 'number';
+        }).join(', ');
     };
 
     Select.prototype.renderButton = function renderButton() {

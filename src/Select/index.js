@@ -91,7 +91,7 @@ class Select extends Component {
     renderButtonText() {
         const value = this.props.value;
 
-        return this.getItems().reduce((res, item) => {
+        var items = this.getItems().reduce((res, item) => {
             if (value.indexOf(item.props.value) !== -1) {
                 if (value.length === 1) {
                     res.push(item.props.children);
@@ -101,6 +101,12 @@ class Select extends Component {
             }
             return res;
         }, []);
+
+        if (items.length === 1) {
+            return items;
+        }
+
+        return items.filter(i => typeof i === 'string' || typeof i === 'number').join(', ');
     }
 
     renderButton() {
