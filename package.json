@@ -3,12 +3,6 @@
   "version": "0.13.3",
   "description": "A set of react components implementing Yandex's islands design",
   "main": "components/index.js",
-  "files": [
-    "*.md",
-    "LICENSE",
-    "components",
-    "src"
-  ],
   "scripts": {
     "clean": "rm -rf components src/index.js",
     "lint": "eslint --cache --ignore-path .gitignore src",
