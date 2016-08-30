@@ -94,14 +94,13 @@ class Select extends Component {
         return this.getItems().reduce((res, item) => {
             if (value.indexOf(item.props.value) !== -1) {
                 if (value.length === 1) {
-                    res.push(Component.textValue(item));
+                    res.push(item.props.children);
                 } else {
-                    res.push(item.props.checkedText || Component.textValue(item));
+                    res.push(item.props.checkedText || item.props.children);
                 }
             }
             return res;
-        }, [])
-        .join(', ');
+        }, []);
     }
 
     renderButton() {
